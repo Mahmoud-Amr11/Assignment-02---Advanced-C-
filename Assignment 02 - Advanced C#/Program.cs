@@ -38,11 +38,35 @@
             {
                 stack.Push(queue.Dequeue());
             }
-          
+
             while (stack.Count > 0)
             {
                 queue.Enqueue(stack.Pop());
             }
+        }
+        static bool IsBalanced(string s)
+        {
+            Stack<char> stack = new Stack<char>();
+            foreach (char c in s)
+            {
+                if (c == '(' || c == '{' || c == '[')
+                {
+                    stack.Push(c);
+                }
+                else if (c == ')' || c == '}' || c == ']')
+                {
+                    if (stack.Count == 0)
+                        return false;
+
+                    char top = stack.Pop();
+                    if ((c == ')' && top != '(') ||  (c == '}' && top != '{') ||  (c == ']' && top != '['))
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return stack.Count == 0;
         }
         static void Main(string[] args)
         {
@@ -90,21 +114,35 @@
             #endregion
 
             #region 3. Given a Queue, implement a function to reverse the elements of a queue using a stack.
-            Queue<int> q = new Queue<int>();
-            q.Enqueue(1);
-            q.Enqueue(2);
-            q.Enqueue(3);
-            q.Enqueue(4);
-            q.Enqueue(5);
+            //Queue<int> q = new Queue<int>();
+            //q.Enqueue(1);
+            //q.Enqueue(2);
+            //q.Enqueue(3);
+            //q.Enqueue(4);
+            //q.Enqueue(5);
 
-            ReverseQueue(q);
+            //ReverseQueue(q);
 
-            Console.WriteLine("Reversed Queue:");
-            foreach (var item in q)
+            //Console.WriteLine("Reversed Queue:");
+            //foreach (var item in q)
+            //{
+            //    Console.Write(item + " ");
+            //}
+
+            #endregion
+
+            #region 4. Given a Stack, implement a function to check if a string of parentheses is balanced using a stack.
+
+            string s = Console.ReadLine();
+
+            if (IsBalanced(s))
             {
-                Console.Write(item + " ");
+                Console.WriteLine("Balanced");
             }
-
+            else
+            {
+                Console.WriteLine("Not Balanced");
+            }
             #endregion
         }
     }
