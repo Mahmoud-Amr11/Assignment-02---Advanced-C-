@@ -167,6 +167,31 @@ namespace Assignment_02___Advanced_C_
             return null; 
         }
 
+        static void ReverseFirstKElements(Queue<int> queue, int k)
+        {
+           
+
+            Stack<int> stack = new Stack<int>();
+
+           
+            for (int i = 0; i < k; i++)
+            {
+                stack.Push(queue.Dequeue());
+            }
+
+          
+            while (stack.Count > 0)
+            {
+                queue.Enqueue(stack.Pop());
+            }
+
+          
+            int remaining = queue.Count - k;
+            for (int i = 0; i < remaining; i++)
+            {
+                queue.Enqueue(queue.Dequeue());
+            }
+        }
 
 
         static void Main(string[] args)
@@ -321,24 +346,41 @@ namespace Assignment_02___Advanced_C_
             #endregion
 
             #region 10. Given  an ArrayList of integers and a target sum, find if there is a contiguous sub list that sums up to the target.
-            List<int> list = new List<int>() { 1, 2, 3, 7, 5 };
+            //List<int> list = new List<int>() { 1, 2, 3, 7, 5 };
 
-            int target = 12;
-            List<int> result = FindSublistWithSum(list, target);
+            //int target = 12;
+            //List<int> result = FindSublistWithSum(list, target);
 
-            if(result==null)
+            //if(result==null)
+            //{
+            //    Console.WriteLine("No sublist found with the given sum.");
+            //}
+            //else
+            //{
+
+            //    foreach(var item in result)
+            //    {
+            //        Console.Write(item + " ");
+            //    }
+            //}
+            #endregion
+
+            #region 11. Given a queue reverse first K elements of a queue, keeping the remaining elements in the same order 
+            Queue<int> queue = new Queue<int>(new int[] { 1, 2, 3, 4, 5 });
+            int k = 3;
+
+          
+            ReverseFirstKElements(queue, k);
+           
+            
+            foreach (var item in queue)
             {
-                Console.WriteLine("No sublist found with the given sum.");
-            }
-            else
-            {
-               
-                foreach(var item in result)
-                {
-                    Console.Write(item + " ");
-                }
+                Console.Write(item + " ");
             }
             #endregion
+
+
+
         }
     }
 }
