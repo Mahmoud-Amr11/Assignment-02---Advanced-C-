@@ -1,4 +1,6 @@
-﻿namespace Assignment_02___Advanced_C_
+﻿using System;
+
+namespace Assignment_02___Advanced_C_
 {
     internal class Program
     {
@@ -183,17 +185,33 @@
 
 
             #region 6. Given an array list , implement a function to remove all odd numbers from it.
-            List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            //List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
 
-            RemoveOddNumbers(numbers);
+            //RemoveOddNumbers(numbers);
 
-            Console.WriteLine("After Removing Odd Numbers:");
-             
-            foreach (var number in numbers)
+            //Console.WriteLine("After Removing Odd Numbers:");
+
+            //foreach (var number in numbers)
+            //{
+            //    Console.Write(number + " ");
+            //}
+            #endregion
+
+            #region 7. Implement a queue that can hold different data types. 
+            Queue<object> queue = new Queue<object>();
+
+            queue.Enqueue(1);          
+            queue.Enqueue("Apple");    
+            queue.Enqueue(5.28);     
+
+           
+            foreach (object item in queue)
             {
-                Console.Write(number + " ");
+                Console.WriteLine(item + " ");
             }
+
+
             #endregion
         }
     }
