@@ -86,6 +86,10 @@
             size = index;
             return newarr;
         }
+        static void RemoveOddNumbers(List<int> numbers)
+        {
+            numbers.RemoveAll(n => n % 2 != 0);
+        }
         static void Main(string[] args)
         {
             #region 1. Given an array  consists of  numbers with size N and number of queries, in each query you will be given an integer X, and you should print how many numbers in array that is greater than  X.
@@ -164,17 +168,32 @@
             #endregion
 
             #region 5. Given an array, implement a function to remove duplicate elements from an array.
-            int[] arr = { 1, 2, 2, 3, 4, 1, 5, 3, 6, 6, 7 };
+            //int[] arr = { 1, 2, 2, 3, 4, 1, 5, 3, 6, 6, 7 };
 
-            int size = arr.Length;
-            int[] result = RemoveDuplicates(arr, ref size);
+            //int size = arr.Length;
+            //int[] result = RemoveDuplicates(arr, ref size);
 
-            Console.WriteLine("Array after removing duplicates:");
-            for (int i = 0; i < size; i++)
+            //Console.WriteLine("Array after removing duplicates:");
+            //for (int i = 0; i < size; i++)
+            //{
+            //    Console.Write(result[i] + " ");
+            //}
+
+            #endregion
+
+
+            #region 6. Given an array list , implement a function to remove all odd numbers from it.
+            List<int> numbers = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+
+            RemoveOddNumbers(numbers);
+
+            Console.WriteLine("After Removing Odd Numbers:");
+             
+            foreach (var number in numbers)
             {
-                Console.Write(result[i] + " ");
+                Console.Write(number + " ");
             }
-
             #endregion
         }
     }
