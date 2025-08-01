@@ -59,7 +59,7 @@
                         return false;
 
                     char top = stack.Pop();
-                    if ((c == ')' && top != '(') ||  (c == '}' && top != '{') ||  (c == ']' && top != '['))
+                    if ((c == ')' && top != '(') || (c == '}' && top != '{') || (c == ']' && top != '['))
                     {
                         return false;
                     }
@@ -67,6 +67,24 @@
             }
 
             return stack.Count == 0;
+        }
+        public static int[] RemoveDuplicates(int[] arr, ref int size)
+        {
+            bool[] check = new bool[100];
+            int[] newarr = new int[arr.Length];
+            int index = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (check[arr[i]] == false)
+                {
+                    newarr[index] = arr[i];
+                    check[arr[i]] = true;
+                    index++;
+                }
+
+            }
+            size = index;
+            return newarr;
         }
         static void Main(string[] args)
         {
@@ -133,16 +151,30 @@
 
             #region 4. Given a Stack, implement a function to check if a string of parentheses is balanced using a stack.
 
-            string s = Console.ReadLine();
+            //string s = Console.ReadLine();
 
-            if (IsBalanced(s))
+            //if (IsBalanced(s))
+            //{
+            //    Console.WriteLine("Balanced");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Not Balanced");
+            //}
+            #endregion
+
+            #region 5. Given an array, implement a function to remove duplicate elements from an array.
+            int[] arr = { 1, 2, 2, 3, 4, 1, 5, 3, 6, 6, 7 };
+
+            int size = arr.Length;
+            int[] result = RemoveDuplicates(arr, ref size);
+
+            Console.WriteLine("Array after removing duplicates:");
+            for (int i = 0; i < size; i++)
             {
-                Console.WriteLine("Balanced");
+                Console.Write(result[i] + " ");
             }
-            else
-            {
-                Console.WriteLine("Not Balanced");
-            }
+
             #endregion
         }
     }
