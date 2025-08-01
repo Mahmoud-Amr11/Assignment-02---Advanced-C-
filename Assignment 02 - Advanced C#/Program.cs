@@ -116,6 +116,32 @@ namespace Assignment_02___Advanced_C_
                 Console.WriteLine("Target was not found");
             }
         }
+        static List<int> FindIntersection(int[] arr1, int[] arr2)
+        {
+            
+            int[] freq = new int[1000];
+            List<int> result = new List<int>();
+
+           
+            foreach (int num in arr1)
+            {
+                freq[num]++;
+            }
+
+            
+            foreach (int num in arr2)
+            {
+                if (freq[num] > 0)
+                {
+                    result.Add(num);
+                    freq[num]--;
+                }
+            }
+
+            return result;
+        }
+
+        
         static void Main(string[] args)
         {
             #region 1. Given an array  consists of  numbers with size N and number of queries, in each query you will be given an integer X, and you should print how many numbers in array that is greater than  X.
@@ -239,18 +265,34 @@ namespace Assignment_02___Advanced_C_
             #endregion
 
             #region 8. Create a function that pushes a series of integers onto a stack. Then, search for a target integer in the stack. If the target is found, print a message indicating that the target was found how many elements were checked before finding the target (“Target was found successfully and the count = 5”). If the target is not found, print a message indicating that the target was not found(“Target was not found”).
-            Stack<int> stack = new Stack<int>();
-            stack.Push(10);
-            stack.Push(20);
-            stack.Push(30);
-            stack.Push(40);
-            stack.Push(50);
+            //Stack<int> stack = new Stack<int>();
+            //stack.Push(10);
+            //stack.Push(20);
+            //stack.Push(30);
+            //stack.Push(40);
+            //stack.Push(50);
 
-            int target = int.Parse(Console.ReadLine());
+            //int target = int.Parse(Console.ReadLine());
 
-            SearchInStack(stack, target);
+            //SearchInStack(stack, target);
 
             #endregion
+
+            #region 9. Given two arrays, find their intersection. Each element in the result should appear as many times as it shows in both arrays.
+            int[] arr1 = { 1, 2, 3, 4, 4 };
+            int[] arr2 = { 10, 4, 4 };
+
+            List<int> intersection = FindIntersection(arr1, arr2);
+           
+            foreach (var item in intersection)
+            {
+                Console.Write(item + " ");
+            }
+       
+
+
+            #endregion
+
         }
     }
 }
