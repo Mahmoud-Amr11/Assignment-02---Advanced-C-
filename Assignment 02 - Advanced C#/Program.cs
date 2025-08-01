@@ -92,6 +92,30 @@ namespace Assignment_02___Advanced_C_
         {
             numbers.RemoveAll(n => n % 2 != 0);
         }
+
+
+        static void SearchInStack(Stack<int> stack, int target)
+        {
+            int count = 0;
+            bool found = false;
+            foreach (var item in stack)
+            {
+                count++;
+                if (item.Equals(target))
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (found)
+            {
+                Console.WriteLine($"Target was found successfully and the count = {count}");
+            }
+            else
+            {
+                Console.WriteLine("Target was not found");
+            }
+        }
         static void Main(string[] args)
         {
             #region 1. Given an array  consists of  numbers with size N and number of queries, in each query you will be given an integer X, and you should print how many numbers in array that is greater than  X.
@@ -199,18 +223,32 @@ namespace Assignment_02___Advanced_C_
             #endregion
 
             #region 7. Implement a queue that can hold different data types. 
-            Queue<object> queue = new Queue<object>();
+            //Queue<object> queue = new Queue<object>();
 
-            queue.Enqueue(1);          
-            queue.Enqueue("Apple");    
-            queue.Enqueue(5.28);     
+            //queue.Enqueue(1);          
+            //queue.Enqueue("Apple");    
+            //queue.Enqueue(5.28);     
 
-           
-            foreach (object item in queue)
-            {
-                Console.WriteLine(item + " ");
-            }
 
+            //foreach (object item in queue)
+            //{
+            //    Console.WriteLine(item + " ");
+            //}
+
+
+            #endregion
+
+            #region 8. Create a function that pushes a series of integers onto a stack. Then, search for a target integer in the stack. If the target is found, print a message indicating that the target was found how many elements were checked before finding the target (“Target was found successfully and the count = 5”). If the target is not found, print a message indicating that the target was not found(“Target was not found”).
+            Stack<int> stack = new Stack<int>();
+            stack.Push(10);
+            stack.Push(20);
+            stack.Push(30);
+            stack.Push(40);
+            stack.Push(50);
+
+            int target = int.Parse(Console.ReadLine());
+
+            SearchInStack(stack, target);
 
             #endregion
         }
