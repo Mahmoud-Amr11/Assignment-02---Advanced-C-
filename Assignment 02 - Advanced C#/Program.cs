@@ -118,17 +118,17 @@ namespace Assignment_02___Advanced_C_
         }
         static List<int> FindIntersection(int[] arr1, int[] arr2)
         {
-            
+
             int[] freq = new int[1000];
             List<int> result = new List<int>();
 
-           
+
             foreach (int num in arr1)
             {
                 freq[num]++;
             }
 
-            
+
             foreach (int num in arr2)
             {
                 if (freq[num] > 0)
@@ -141,7 +141,34 @@ namespace Assignment_02___Advanced_C_
             return result;
         }
 
-        
+
+        static List<int> FindSublistWithSum(List<int> list, int target)
+        {
+            int start = 0, currentSum = 0;
+
+            for (int i = 0; i < list.Count; i++)
+            {
+                currentSum += list[i];
+
+                
+                while (currentSum > target && start <= i)
+                {
+                    currentSum -= list[start];
+                    start++;
+                }
+
+                
+                if (currentSum == target)
+                {
+                    return list.GetRange(start, i - start + 1);
+                }
+            }
+
+            return null; 
+        }
+
+
+
         static void Main(string[] args)
         {
             #region 1. Given an array  consists of  numbers with size N and number of queries, in each query you will be given an integer X, and you should print how many numbers in array that is greater than  X.
@@ -279,20 +306,39 @@ namespace Assignment_02___Advanced_C_
             #endregion
 
             #region 9. Given two arrays, find their intersection. Each element in the result should appear as many times as it shows in both arrays.
-            int[] arr1 = { 1, 2, 3, 4, 4 };
-            int[] arr2 = { 10, 4, 4 };
+            //int[] arr1 = { 1, 2, 3, 4, 4 };
+            //int[] arr2 = { 10, 4, 4 };
 
-            List<int> intersection = FindIntersection(arr1, arr2);
-           
-            foreach (var item in intersection)
-            {
-                Console.Write(item + " ");
-            }
-       
+            //List<int> intersection = FindIntersection(arr1, arr2);
+
+            //foreach (var item in intersection)
+            //{
+            //    Console.Write(item + " ");
+            //}
+
 
 
             #endregion
 
+            #region 10. Given  an ArrayList of integers and a target sum, find if there is a contiguous sub list that sums up to the target.
+            List<int> list = new List<int>() { 1, 2, 3, 7, 5 };
+
+            int target = 12;
+            List<int> result = FindSublistWithSum(list, target);
+
+            if(result==null)
+            {
+                Console.WriteLine("No sublist found with the given sum.");
+            }
+            else
+            {
+               
+                foreach(var item in result)
+                {
+                    Console.Write(item + " ");
+                }
+            }
+            #endregion
         }
     }
 }
